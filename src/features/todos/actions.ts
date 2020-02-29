@@ -10,9 +10,9 @@ export const addTodo = createAction("ADD_TODO", (title: string) => ({
 export const removeTodo = createAction("REMOVE_TODO")<string>();
 
 export const loadTodosAsync = createAsyncAction(
-  'LOAD_TODOS_REQUEST',
-  'LOAD_TODOS_SUCCESS',
-  'LOAD_TODOS_FAILURE'
+  "LOAD_TODOS_REQUEST",
+  "LOAD_TODOS_SUCCESS",
+  "LOAD_TODOS_FAILURE"
 )<undefined, Todo[], string>();
 
 export const saveTodosAsync = createAsyncAction(
