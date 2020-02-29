@@ -7,11 +7,11 @@ import { getTodos } from "./selectors";
 import { Services, RootAction, RootState } from "services";
 import { isActionOf, ActionType, Action } from "typesafe-actions";
 import { loadSnapshot } from "../../services/todos-api-client";
-export type actionTypes = ActionType<typeof loadTodosAsync>;
-export type actionTypes_ = ActionType<typeof saveTodosAsync>;
+export type loadActionTypes = ActionType<typeof loadTodosAsync>;
+export type saveActionTypes = ActionType<typeof saveTodosAsync>;
 export const loadTodosEpic: Epic<
-  actionTypes,
-  actionTypes,
+  loadActionTypes,
+  loadActionTypes,
   RootState,
   Services
 > = (action$, state$, { api }) =>
@@ -26,8 +26,8 @@ export const loadTodosEpic: Epic<
   );
 
 export const saveTodoEpic: Epic<
-  actionTypes_,
-  actionTypes_,
+  saveActionTypes,
+  saveActionTypes,
   RootState,
   Services
 > = (action$, state$, { api }) =>
