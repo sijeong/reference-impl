@@ -20,7 +20,7 @@ export const todos = createReducer<Todo[], actionTypes>([] as Todo[])
   .handleAction(loadTodosAsync.success, (state, action) => action.payload)
   .handleAction(addTodo, (state, action) => [...state, action.payload])
   .handleAction(removeTodo, (state, action) =>
-    state.filter(i => i.id == action.payload)
+    state.filter(i => i.id !== action.payload)
   );
 
 const todosReducer = combineReducers({

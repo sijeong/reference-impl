@@ -1,6 +1,6 @@
 import { Todo } from "TodoModels";
 
-let todos: Todo[] = [{ id: "0", title: "default" }];
+let todos: Todo[] = [{ id: "0", title: "default" }, {id: "1", title: "second"}];
 
 export function loadSnapshot(): Promise<Todo[]> {
   return new Promise((resolve, reject) => {
