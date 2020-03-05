@@ -1,13 +1,13 @@
-import { combineReducers } from "redux";
-import { Todo } from "TodoModels";
-import { createReducer, ActionType } from "typesafe-actions";
-import { addTodo, loadTodosAsync, removeTodo } from "./actions";
+import { combineReducers } from 'redux';
+import { Todo } from 'TodoModels';
+import { createReducer } from 'typesafe-actions';
+import { addTodo, loadTodosAsync, removeTodo, todoActionTypes } from './actions';
 
-export type actionTypes = ActionType<
-  typeof import("../../store/root-actions").default
->;
+// export type actionTypes = ActionType<
+//   typeof import("../../store/root-actions").default
+// >;
 
-export const isLoadingTodos = createReducer<boolean, actionTypes>(
+export const isLoadingTodos = createReducer<boolean, todoActionTypes>(
   false as boolean
 )
   .handleAction([loadTodosAsync.request], (state, action) => true)
@@ -16,7 +16,7 @@ export const isLoadingTodos = createReducer<boolean, actionTypes>(
     (state, action) => false
   );
 
-export const todos = createReducer<Todo[], actionTypes>([] as Todo[])
+export const todos = createReducer<Todo[], todoActionTypes>([] as Todo[])
   .handleAction(loadTodosAsync.success, (state, action) => action.payload)
   .handleAction(addTodo, (state, action) => [...state, action.payload])
   .handleAction(removeTodo, (state, action) =>

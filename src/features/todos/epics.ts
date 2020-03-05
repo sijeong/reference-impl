@@ -1,17 +1,14 @@
-import { Epic, StateObservable } from "redux-observable";
-import { Observable, from, of } from "rxjs";
-import { filter, switchMap, mergeMap, catchError, map } from "rxjs/operators";
+import { Epic } from 'redux-observable';
+import { from, of } from 'rxjs';
+import { catchError, filter, map, switchMap } from 'rxjs/operators';
+import { RootState, Services } from 'services';
+import { isActionOf } from 'typesafe-actions';
+import { loadTodosAsync, saveTodosAsync, todoActionTypes } from './actions';
+import { getTodos } from './selectors';
 
-import { loadTodosAsync, saveTodosAsync } from "./actions";
-import { getTodos } from "./selectors";
-import { Services, RootAction, RootState } from "services";
-import { isActionOf, ActionType, Action } from "typesafe-actions";
-import { loadSnapshot } from "../../services/todos-api-client";
-export type loadActionTypes = ActionType<typeof loadTodosAsync>;
-export type saveActionTypes = ActionType<typeof saveTodosAsync>;
 export const loadTodosEpic: Epic<
-  loadActionTypes,
-  loadActionTypes,
+  todoActionTypes,
+  todoActionTypes,
   RootState,
   Services
 > = (action$, state$, { api }) =>
@@ -26,8 +23,8 @@ export const loadTodosEpic: Epic<
   );
 
 export const saveTodoEpic: Epic<
-  saveActionTypes,
-  saveActionTypes,
+  todoActionTypes,
+  todoActionTypes,
   RootState,
   Services
 > = (action$, state$, { api }) =>

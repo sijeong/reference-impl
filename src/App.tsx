@@ -1,6 +1,6 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import HospitalList from './features/hospitals/components/HospitalList';
 import TodoList from './features/todos/components/TodoList';
 import TodoListActions from './features/todos/components/TodoListActions';
 
@@ -10,6 +10,8 @@ function App() {
       <header className="App-header">
         <TodoListActions></TodoListActions>
         <TodoList></TodoList>
+
+        <HospitalList></HospitalList>
       </header>
     </div>
   );

@@ -1,9 +1,9 @@
-import React from "react";
-import { getTodos } from "../selectors";
-import { removeTodo } from "../actions";
-import TodoListItem from "./TodoListItem";
-import { RootState } from "services";
-import { connect } from "react-redux";
+import React from 'react';
+import { getTodos } from '../selectors';
+import { removeTodo } from '../actions';
+import TodoListItem from './TodoListItem';
+import { RootState } from 'services';
+import { connect } from 'react-redux';
 
 const mapStateToProps = (state: RootState) => ({
   isLoading: state.todos.isLoadingTodos,
@@ -16,7 +16,7 @@ const dispatchProps = {
 
 type Props = ReturnType<typeof mapStateToProps> & typeof dispatchProps;
 
-const TodoList = ({ isLoading, todos = [], removeTodo }: Props) => {
+const TodoList = ({ todos, isLoading, removeTodo }: Props) => {
   if (isLoading) {
     return <p>Loading...</p>;
   }
